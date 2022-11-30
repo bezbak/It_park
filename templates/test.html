@@ -1,0 +1,56 @@
+{% extends 'homepage.html' %}
+{% block title %}{{setting.title}}{% endblock title %}
+{% block content %}
+
+{% include 'include/header.html' %}
+
+<div class="subpage-head has-margin-bottom">
+    <div class="container">
+        <h3>Contact us</h3>
+        <p class="lead">Our Church address and contact details</p>
+    </div>
+</div>
+    
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 has-margin-bottom">
+            <form method="POST">
+                {%csrf_token%}
+                <div class="form-group">
+                    <h5>Ваше имя</h5>
+                    <input type="text" class="form-control" name="name" id="name">
+                </div>
+                <div class="form-group">
+                    <h5>Вам нравиться рисовать?</h5>
+                    <select name="first_ask" id="" class="form-control">
+                        <option value="Да">Да</option>
+                        <option value="Нет">Нет</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <h5>Вы хотите больше писать код или делать дизайн сайта?</h5>
+                    <select name="second_ask" id="" class="form-control">
+                        <option value="Писать код">Писать код</option>
+                        <option value="Делать дизайн">Делать дизайн</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <h5>Ваш возраст</h5>
+                    <input type="number" min="0" max="100" maxlength="3" onchange=""  class="form-control" name="age" id="name">
+                </div>
+                <div class="form-group">
+                    <h5>Обучались ранее программированию?</h5>
+                    <select name="third_ask" id="" class="form-control">
+                        <option value="Да">Да</option>
+                        <option value="Нет">Нет</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Отправить</button>
+                <span class="help-block loading"></span>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include 'include/footer.html' %}
+{% endblock content %}

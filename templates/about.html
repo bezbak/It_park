@@ -1,0 +1,82 @@
+{% extends 'homepage.html' %}
+{% block title %}{{setting.title}}{% endblock title %}
+{% block content %}
+
+{% include 'include/header.html' %}
+
+
+
+<div class="subpage-head has-margin-bottom">
+<div class="container">
+<h3>О нас</h3>
+<p class="lead" style="color:white ;" >{{setting.title}} </p>
+</div>
+</div>
+
+<div class="container has-margin-bottom">
+<div class="row">
+<div class="col-md-12 has-margin-bottom" style="color:white ;">
+<p class="lead"> {{about_us.text|safe}}</p>
+</div>
+
+
+
+</div>
+</div>
+
+<div class="container" id ="team">
+  <div class="section-title">
+    <h4> Наша команда </h4>
+  </div>
+  <div class="row feature-block d-f-jc">
+    {%for team in teacher%}
+    {%if 'Ген директор' in team.name%}
+      <div class="col-md-4 col-sm-6 has-margin-bottom "> 
+        <img class="img-responsive" src="{{team.image.url}}" alt="catholic church">
+        <a href="{% url 'teacher' team.id %}"role="button"><h5>{{team.name}}</h5></a>
+        <p>{{team.direction}} <br> {{team.description|safe|truncatechars:60}}</p>
+        <p>{% if team.facebook %}<a href="{{team.facebook}}" role="button">Facebook</a> /{% endif %}  {% if team.instagram %}<a href="{{team.instagram}}" role="button">Instagram</a>{% endif %} </p>
+      </div>
+      {%endif%}
+    {%endfor%}
+  </div>
+  <div class="row feature-block">
+    {%for team in teacher%}
+    {%if 'Ген директор' in team.name%}
+    {% else %}
+      <div class="col-md-4 col-sm-6 has-margin-left "> 
+        <a href="{% url 'teacher' team.id %}"role="button"><img class="img-responsive" src="{{team.image.url}}" alt="catholic church"></a>
+        <a href="{% url 'teacher' team.id %}"role="button"><h5>{{team.name}}</h5></a>
+        <p>{{team.direction}} <br> {{team.description|safe|truncatechars:60}}</p>
+        <p>{% if team.facebook %}<a href="{{team.facebook}}" role="button">Facebook</a> /{% endif %}  {% if team.instagram %}<a href="{{team.instagram}}" role="button">Instagram</a>{% endif %} </p>
+      </div>
+      {%endif%}
+    {%endfor%}
+
+  </div>
+  <!-- <div class="row feature-block">
+  <div class="col-md-4 col-sm-6 has-margin-bottom"> <img class="img-responsive" src="images/team-1.jpg" alt="catholic church">
+  <h5>REV: JOSE MATHEW</h5>
+  <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa. </p>
+  <p><a href="#" role="button">Facebook</a> / <a href="#" role="button">Twitter</a></p>
+  </div>
+
+  <div class="col-md-4 col-sm-6 has-margin-bottom"> <img class="img-responsive" src="images/team-2.jpg" alt="ministry sermon">
+  <h5>FR: VINCENT</h5>
+  <p>Fermentum massa.Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+  <p><a href="#" role="button">Facebook</a> / <a href="#" role="button">Twitter</a></p>
+  </div>
+
+  <div class="col-md-4 col-sm-8 col-sm-offset-2 col-md-offset-0 center-this has-margin-bottom"> <img class="img-responsive" src="images/team-3.jpg" alt="bulletin programs">
+  <h5>THIMOTHY FRANCIS</h5>
+  <p> Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa etiam porta fusce dapibus.</p>
+  <p><a href="#" role="button">Facebook</a> / <a href="#" role="button">Twitter</a></p>
+  </div>
+
+  </div> -->
+</div>
+
+
+
+{% include 'include/footer.html' %}
+{% endblock content %}

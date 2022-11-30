@@ -1,0 +1,207 @@
+﻿{% extends 'homepage.html' %}
+{% block title %}{{setting.title}}{% endblock title %}
+{% block content %}
+
+{% include 'include/header.html' %}
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+<ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+<li data-target="#myCarousel" data-slide-to="1"></li>
+<li data-target="#myCarousel" data-slide-to="2"></li>
+</ol>
+<div class="carousel-inner">
+<div class="item slide-one active">
+<div class="container">
+<div class="carousel-caption">
+<h3>Пора действовать</h3>
+<h1>Достигни своих целей с нами!</h1>
+<p><a class="btn btn-giant btn-primary" href="{%url 'response'%}" role="button"> Записаться &rarr;</a></p>
+</div>
+</div>
+</div>
+<div class="item slide-two">
+<div class="container">
+<div class="carousel-caption">
+<h2>Пройдите тест </h2>
+<p class="lead"> и выберите подходящее вам направление </p>
+<p><a class="btn btn-lg btn-primary" href="{%url 'test'%}" role="button"> Тест &rarr;</a></p>
+</div>
+</div>
+</div>
+<div class="item slide-three">
+<div class="container">
+<div class="carousel-caption">
+<h2>Познакомитесь с преподавателями</h2>
+<!-- <p class="lead">For God did not send his Son into the world to condemn the world, but to save the world through him. <em>John 3:17</em></p> -->
+<p><a class="btn btn-lg btn-primary mentors-button" href="{%url 'about'%}#team" role="button"> менторы &rarr;</a></p>
+</div>
+</div>
+</div>
+</div>
+<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a> </div>
+
+
+
+
+<div class="container container123">
+  <div class="row feature-block">
+    {% for course in courses %}
+    <div class="col-md-4 col-sm-6 has-margin-bottom leanguages-text-align"> 
+      <img class="img-responsive" src="{{course.image.url}}" alt="catholic church" style="margin:0 auto;">
+      <h5 class="courses-text" >{{course.title}}</h5>
+      <p>{{course.description|safe|truncatechars:35}}</p>
+      <p><a href="{% url 'course' course.id %}" role="button" style="color:#ff5000;">Подробнее →</a></p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<div class="highlight-bg has-margin-bottom">
+  <div class="container event-list">
+    <div class="section-title">
+      <h4> Новости и ивенты </h4>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="owl-carousel">
+          {%for news in news%}
+          <div class="el-block item">
+            <h4> {{news.date|date}} </h4>
+            <p class="el-head">{{news.title}}</p>
+            <span>{{news.date|time}}</span>
+            <p class="el-cta"><a class="btn btn-primary" href="{% url 'news_detail' news.id %}" role="button">Подробнее &rarr;</a></p>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %} 
+<div class="container has-margin-bottom">
+<div class="row">
+<div class="col-md-9 has-margin-bottom">
+<div class="section-title left-align-desktop">
+<h4> LATEST BULLETIN </h4>
+</div>
+
+<div class="row has-margin-bottom">
+<div class="col-md-4 col-sm-4"> <img class="img-responsive center-block" src="images/blog-thumb-1.jpg" alt="bulletin blog"> </div>
+<div class="col-md-8 col-sm-8 bulletin">
+<h4 class="media-heading">Perseverance of the Saints </h4>
+<p>on 17th June 2014 by <a href="#" class="link-reverse">Vincent John</a></p>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet...</p>
+<a class="btn btn-primary" href="blog-single.html" role="button">Read Article →</a> </div>
+</div>
+
+<div class="row">
+<div class="col-md-4 col-sm-4"> <img class="img-responsive center-block" src="images/blog-thumb-2.jpg" alt="bulletin blog"> </div>
+<div class="col-md-8 col-sm-8 bulletin">
+<h4 class="media-heading">Lord is Sufficient for all of our needs </h4>
+<p>on 17th June 2014 by <a href="#" class="link-reverse">Jose Mathew</a></p>
+<p class="media-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis egestas rhoncus. Donec facilisis fermentum sem, ac viverra ante luctus vel. Donec vel mauris quam. Lorem ipsum dolor sit amet...</p>
+<a class="btn btn-primary" href="blog-single.html" role="button">Read Article →</a> </div>
+</div>
+</div>
+
+
+<div class="col-md-3">
+<div class="well">
+<div class="section-title">
+<h4> RECENT SERMONS </h4>
+</div>
+<a href="#"><img src="images/video-thumb.jpg" class="img-responsive center-block" alt="video thumb"></a>
+<div class="list-group"> <a href="sermons.html" class="list-group-item">
+<p class="list-group-item-heading">Heavens and the earth</p>
+<p class="list-group-item-text">24:15 mins</p>
+</a> <a href="sermons.html" class="list-group-item">
+<p class="list-group-item-heading">Prayer and petition</p>
+<p class="list-group-item-text">12:00 mins</p>
+</a> <a href="sermons.html" class="list-group-item">
+<p class="list-group-item-heading">Fruit of the Spirit</p>
+<p class="list-group-item-text">30:25 mins</p>
+</a> <a href="sermons.html" class="list-group-item">
+<p class="list-group-item-heading">Do not be afraid; keep on...</p>
+<p class="list-group-item-text">17:00 mins</p>
+</a> </div>
+</div>
+</div>
+</div>
+</div> {% endcomment %}
+
+
+<!-- <div class="container has-margin-bottom">
+<div class="section-title">
+<h4>GRACE OUTREACH </h4>
+</div>
+<div class="charity-box">
+<div class="charity-image"> <img src="images/charity-donation.jpg" class="img-responsive" alt="charity donation fundraising"></div>
+<div class="charity-desc">
+<h3>Help human trafficking survivors</h3>
+<p> Posted by <a class="link-reverse" href="#">Steven</a> on Aug 11 2014</p>
+<h2 class="pledged-amount">$6560.00</h2>
+<p>Pledged of $15000 goal</p>
+<div class="progress">
+<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete</span>60%</div>
+</div>
+<div class="pull-left has-margin-xs-right">
+<h3>24</h3>
+<p>Backers</p>
+</div>
+<div class="pull-left">
+<h3 class="pledged-amount">17</h3>
+<p>Days left</p>
+</div>
+<div class="donate-now"> <a href="charity-donation.html" class="btn btn-lg btn-primary">Donate Now →</a> </div>
+</div>
+</div>
+</div> -->
+
+
+<div class="container has-margin-bottom">
+  <div class="section-title">
+    <h4> Галлерея </h4>
+  </div>
+  <div class="img-gallery row">
+    {%for image in gallery%}
+    <div class="col-sm-4 col-md-3">
+        <img src="{{image.photo.url}}" class="img-responsive" width="270" height="270" alt="church image gallery">
+    </div>
+   {%endfor%}
+  </div>
+</div>
+
+
+<div class="highlight-bg">
+  <div class="container event-list">
+    <div class="section-title">
+      <h4> Отзывы </h4>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="owl-carousel2">
+          {%for review in reviews%}
+          <div class="item">
+            <blockquote class="blockquote-centered d-f"> 
+                <img class="img-responsive img-width-2" src="{{review.image.url}}" alt="catholic church">
+                <div class="ml-5">
+                  <h5>{{review.name}}</h5>
+                  <p class="text-20">{{review.text}} <br> Выпусник группы {{review.course}}</p>
+                </div>
+            </blockquote>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% include 'include/footer.html' %}
+{% endblock content %}

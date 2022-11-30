@@ -1,0 +1,61 @@
+{% extends 'homepage.html' %}
+{% block title %}{{setting.title}}{% endblock title %}
+{% block content %}
+
+{% include 'include/header.html' %}
+
+
+<div class="subpage-head has-margin-bottom">
+  <div class="container">
+    <h3>Записаться</h3>
+    <p class="lead">Оставьте свои контакты и мы с вами свяжемся</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 has-margin-bottom">
+      <form method="POST">
+        {%csrf_token%}
+        <div class="form-group">
+          <label>ФИО</label>
+          <input type="text" class="form-control" name="name" >
+        </div>
+          <div class="form-group">
+          <label>Номер</label>
+          <input type="text" class="form-control" name="phone" >
+        </div>
+        <div class="form-group">
+          <label>Направление</label>
+          <select type="text" class="form-control" name="direction" >
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg">Отправить</button>
+        <span class="help-block loading"></span>
+      </form>
+    </div>
+
+    <div class="col-md-6 has-margin-bottom">
+      <h5>Наш адрес</h5>
+      <div class="row">
+      <div class="col-lg-6">{{setting.location}}</div>
+      <div class="col-lg-6">
+        WhatsApp:  <a href="https://wa.me/{{setting.phone}}">{{setting.phone}}</a><br>
+        Номер:  <a href="tel:{{setting.phone}}">{{setting.phone.title}}</a><br>
+        Почта:  <a href="mailto:{{setting.email}}">{{setting.email}}</a>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="location-map">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3032.5540305163777!2d72.79563231580474!3d40.529347379352096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bdad01d93a1f6f%3A0x6a9c383ea0094bc!2sITPARK%20ACADEMY!5e0!3m2!1sru!2skg!4v1669762064126!5m2!1sru!2skg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+
+
+{% include 'include/footer.html' %}
+{% endblock content %}

@@ -1,0 +1,74 @@
+{% extends 'homepage.html' %}
+{% block title %}{{course.title}}{% endblock title %}
+{% block content %}
+
+{% include 'include/header.html' %}
+<div class="subpage-head has-margin-bottom">
+  <div class="container">
+    <h3>Курс по {{course.title}}</h3>
+    <p class="lead">Учителя: {{course.teacher}}, {{course.support}}</p>
+    <p class="lead">Цена: {{course.price}} с/м</p>
+  </div>
+</div>
+
+<div class="container has-margin-bottom">
+  <div class="row">
+    <div class="col-md-9 has-margin-bottom"> 
+      <!-- <img src="images/ministry-pic.jpg"  alt="ministry"> -->
+      {% if course.video %}
+      <video class="adi_video img-responsive has-margin-xs-bottom" controls>
+        <source src="{{course.video.url}}">
+      </video>
+      {% else %}
+      <img src="{{course.poster.url}}"  alt="ministry"> 
+      {% endif %}
+      <p>{{course.description|safe}}</p>
+    </div>
+    <div class="col-md-3">
+      <div class="event-right-block has-border has-margin-bottom">
+        <div class="section-title highlight-bg has-padding-xs-top has-padding-bottom">
+          <h4> Другие курсы </h4>
+        </div>
+        {% for rd  in random_courses %}
+        <div class="el-block has-margin-xs-bottom">
+          <h4> Курс по {{rd.title}}  </h4>
+          <p class="el-head">Курс по основам python и по созданию ...</p>
+          <span>Цена: {{rd.price}} с</span>
+          <p class="el-cta"><a class="btn btn-primary" href="{% url 'course' rd.id %}" role="button">Подробнее →</a></p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="highlight-bg">
+  <div class="container">
+    <div class="row">
+    <form method="POST" class="form subscribe-form" >
+      {% csrf_token %}
+      <div class="form-group col-md-3 hidden-sm">
+        <h5 class="susbcribe-head"> Записаться на курс <span>Оставьте номер и мы с вами свяжемся</span></h5>
+      </div>
+      <div class="form-group col-sm-8 col-md-4">
+        <label class="sr-only">Имя</label>
+        <input type="text" class="form-control input-lg" placeholder="Имя" name="name" required>
+        <span class="help-block" id="result"></span> 
+      </div>
+      <div class="form-group col-sm-8 col-md-4">
+        <label class="sr-only">Номер телефона</label>
+        <input type="text" class="form-control input-lg" placeholder="Номер телефона" name="phone" required>
+        <span class="help-block" id="result"></span> 
+      </div>
+      <div class="form-group col-sm-4 col-md-3">
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Записаться →</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{% include 'include/footer.html' %}
+{% endblock content %}

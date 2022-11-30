@@ -1,0 +1,65 @@
+{% extends 'homepage.html' %}
+{% block title %}{{setting.title}}{% endblock title %}
+{% block content %}
+
+{% include 'include/header.html' %}
+
+<div class="subpage-head has-margin-bottom">
+  <div class="container">
+    <h3>{{teacher.name.title}}</h3>
+    <p class="lead"> {{teacher.direction}} </p>
+  </div>
+</div>
+
+<div class="container has-margin-bottom">
+  <div class="row">
+    <div style="display: flex;" class="col-md-9 has-margin-bottom"> 
+      <img src="{{teacher.image.url}}" class="img-thumbnail img-width-1 has-margin-xs-bottom" alt="ministry">
+      <div>
+      <p class="adi_text"> {{teacher.description|safe}}</p>
+    </div>
+    </div>
+    <div class="col-md-3">
+      
+      {% comment %} <div class="well">
+        <div class="section-title">
+          <h4> Факты и проекты </h4>
+        </div>
+        <div class="list-group"> 
+          <a href="#" class="list-group-item">
+            <p class="list-group-item-heading">IT Park</p>
+            <p class="list-group-item-text">Учитель по Frontend</p>
+          </a> 
+          <a href="#" class="list-group-item">
+            <p class="list-group-item-heading">IT-Run</p>
+            <p class="list-group-item-text">Учитель по Frontend</p>
+          </a> 
+          <a href="#" class="list-group-item">
+            <p class="list-group-item-heading">Kyzmat24</p>
+            <p class="list-group-item-text">Сайт на React.js</p>
+          </a>  
+        </div>
+      </div> {% endcomment %}
+    </div>
+  </div>
+</div>
+<div class="subpage-head has-margin-bottom">
+  <div class="container">
+    <h4>Советы от Учителя для новичков</h4>
+  </div>
+</div>
+<div class="container has-margin-bottom">
+  <div class="row">
+    <div style="display: flex;" class="col-md-9 has-margin-bottom"> 
+      <video class="img-thumbnail has-margin-xs-bottom" controls>
+        <source src="{{teacher.video.url}}" >
+      </video>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% include 'include/footer.html' %}
+{% endblock content %}

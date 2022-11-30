@@ -1,0 +1,50 @@
+.container123{
+    padding: 50px 0;
+}
+.img-width-1{
+    max-width: 50% !important;
+    height: 600px;
+    margin-right:15px ;
+} 
+.img-width-2{
+    width: 100px !important;
+    height: 100px;
+}
+.text-20{
+    font-size: 20px;
+
+}
+.ml-5{
+    margin-left: 50px;
+}
+.icon_adi{
+    filter: invert();
+    width: 40px;
+    height: 40px;
+}
+.d-f{
+    display: flex;
+    text-align: left;
+}
+.d-f-jc{
+    display: flex;
+    justify-content: center;
+}
+.adi_text{
+    text-align: left;
+    font-size: 25px;
+}
+.adi_video{
+    width: 100% ;
+}
+@media (max-width:767px) {
+    .img-width-1{
+        max-width: 50% !important;
+        height: 400px;
+        margin-right:15px ;
+    } 
+    .adi_text{
+        text-align: left;
+        font-size: 15px;
+    }
+}

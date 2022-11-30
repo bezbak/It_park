@@ -1,0 +1,45 @@
+{% load static %}
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+          <h5>Ссылки</h5>
+          <ul class="footer-links">
+            <li><a href="{% url 'about' %}">О нас</a></li>
+            <li><a href="{% url 'about' %}#team">Команда</a></li>
+            <li><a href="{% url 'response' %}">Записаться</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <h5>Наш адрес</h5>
+          <p>{{setting.location}}<br>
+              WhatsApp:  <a href="https://wa.me/{{setting.phone}}">{{setting.phone}}</a><br>
+              Номер:  <a href="tel:{{setting.phone}}">{{setting.phone.title}}</a><br>
+              Почта:  <a href="mailto:{{setting.email}}">{{setting.email}}</a>
+          </p>
+        </div>
+        <div class="col-sm-6 col-md-3">
+          <h5>Соц сети</h5>
+        <div class="social-icons">
+          <a href="{{setting.facebook}}">
+            <img src="{%static 'images/fb-icon.png'%}" alt="social">
+          </a> 
+          <a href="https://telegram.me/{{setting.telegram}}">
+            <img src="{%static 'images/telegram.svg'%}" class='icon_adi' alt="social">
+          </a> 
+          <a href="{{setting.instagram}}">
+            <img src="{%static 'images/inst.png'%}" class='icon_adi' alt="social">
+          </a>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <p class="text-center">Copyright © 2022 All rights reserved <br> created by Bezbak and Muhammad</p>
+      </div>
+    </div>
+  </footer>
+  
+  
+  
